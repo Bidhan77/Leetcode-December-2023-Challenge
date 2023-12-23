@@ -1,0 +1,32 @@
+Approach
+check visited or not
+
+Complexity
+Time complexity: O(n)
+Space complexity: O(n)
+Code
+class Solution {
+    public boolean isPathCrossing(String path) {
+        int x = 0, y = 0;
+        Set<String> set = new HashSet<>();
+        String key = x + "_" + y;
+        set.add(key);
+        for (int i = 0; i < path.length(); i++) {
+            if (path.charAt(i) == 'E') {
+                x++;
+            } else if (path.charAt(i) == 'W') {
+                x--;
+            } else if (path.charAt(i) == 'N') {
+                y++;
+            } else {
+                y--;
+            }
+            key = x + "_" + y;
+            if (set.contains(key)) {
+                return true;
+            }
+            set.add(key);
+        }
+        return false;
+    }
+}
